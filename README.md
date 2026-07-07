@@ -3,8 +3,6 @@
 > 基于课程 Agent 框架**二次开发**的 A 股分析流水线：Tushare 行情 + GPT 解读 + LSTM/GRU 深度学习。
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-
 专为 A 股打造的金融分析智能助手，一站式整合数据采集、AI 解析与深度学习预测，覆盖宏观市场研判与板块挖掘、个股走势分析。
 
 ---
@@ -163,6 +161,4 @@ python, tushare, llm, gpt, lstm, gru, stock-analysis, agent, a-share, quantitati
 
 ## 免责声明
 
-本项目基于 MIT 许可证开源，**仅供学习与研究**，不构成任何投资建议。预测结果存在分歧与不确定性，请勿用于实盘交易决策。
-
-详见 [LICENSE](LICENSE)。
+本项目**仅供学习与研究**，不构成任何投资建议。预测结果存在分歧与不确定性，请勿用于实盘交易决策。

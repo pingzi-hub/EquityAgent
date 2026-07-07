@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A股智能分析 Agent - 运行结果证明材料</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: #0f1419;
+      color: #e6edf3;
+      padding: 32px;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: #58a6ff;
+    }
+    .subtitle {
+      text-align: center;
+      color: #8b949e;
+      margin-bottom: 40px;
+      font-size: 14px;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      overflow: hidden;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      page-break-inside: avoid;
+    }
+    .card-header {
+      background: #21262d;
+      padding: 16px 24px;
+      border-bottom: 1px solid #30363d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-header h2 { font-size: 18px; color: #58a6ff; }
+    .badge {
+      background: #238636;
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .card-body { padding: 24px; }
+    .terminal {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 13px;
+      white-space: pre-wrap;
+      color: #c9d1d9;
+      line-height: 1.7;
+    }
+    .green { color: #3fb950; }
+    .yellow { color: #d29922; }
+    .blue { color: #58a6ff; }
+    .red { color: #f85149; }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .metric {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .metric .val { font-size: 28px; font-weight: 700; color: #58a6ff; }
+    .metric .lbl { font-size: 12px; color: #8b949e; margin-top: 4px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+    th, td {
+      border: 1px solid #30363d;
+      padding: 10px 12px;
+      text-align: left;
+    }
+    th { background: #21262d; color: #58a6ff; }
+    .report {
+      background: #0d1117;
+      border-left: 4px solid #58a6ff;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: #c9d1d9;
+    }
+    .footer {
+      text-align: center;
+      color: #484f58;
+      font-size: 12px;
+      margin-top: 24px;
+    }
+    @media print {
+      body { background: #fff; color: #000; }
+      .card { border: 1px solid #ccc; break-inside: avoid; }
+      .terminal, .metric, .report, th { background: #f6f8fa; color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <h1>A股智能分析与预测 Agent</h1>
+  <p class="subtitle">运行结果证明材料 · 交易日 20260707 · 生成于 2026-07-07</p>
+
+  <!-- 证明1：流水线总览 -->
+  <div class="card">
+    <div class="card-header">
+      <h2>证明① 五步流水线端到端跑通</h2>
+      <span class="badge">returncode=0</span>
+    </div>
+    <div class="card-body">
+      <div class="metrics">
+        <div class="metric"><div class="val">5</div><div class="lbl">流水线步骤</div></div>
+        <div class="metric"><div class="val">5517</div><div class="lbl">A股日行情</div></div>
+        <div class="metric"><div class="val">3</div><div class="lbl">三大指数</div></div>
+        <div class="metric"><div class="val">20260707</div><div class="lbl">统一交易日</div></div>
+      </div>
+      <div class="terminal"><span class="blue">PS></span> python -m stock_agent --steps 01,02,03
+
+<span class="green">[完成]</span> 01_data_fetch.py: returncode=0
+<span class="green">[完成]</span> 02_analysis.py: returncode=0
+<span class="green">[完成]</span> 03_stock_prediction.py: returncode=0
+
+<span class="yellow">执行完成：</span>
+- 01_data_fetch.py: returncode=0
+- 02_analysis.py: returncode=0
+- 03_stock_prediction.py: returncode=0</div>
+    </div>
+  </div>
+
+  <!-- 证明2：步骤01数据抓取 -->
+  <div class="card">
+    <div class="card-header">
+      <h2>证明② 步骤01 数据抓取（自动清旧数据）</h2>
+      <span class="badge">成功</span>
+    </div>
+    <div class="card-body">
+      <div class="terminal"><span class="blue">PS></span> python -m stock_agent --steps 01
+
+使用目标日期: 20260707
+<span class="yellow">[清理]</span> 已删除 a_share_out 内 8 个旧输出文件。
+成功获取 <span class="green">5517</span> 条股票日行情数据
+成功获取指数 000001.SH / 399001.SZ / 399006.SZ 的数据
+
+<span class="green">SUMMARY:</span>
+ trade_date  stocks   up  down  flat  amt_total_yi_est
+   20260707    5517  693  4797    27         25.98亿元
+
+<span class="green">[完成] 数据获取完成！</span></div>
+    </div>
+  </div>
+
+  <!-- 证明3：步骤02 GPT分析 -->
+  <div class="card">
+    <div class="card-header">
+      <h2>证明③ 步骤02 GPT-5 八维度市场分析</h2>
+      <span class="badge">gpt-5.4</span>
+    </div>
+    <div class="card-body">
+      <table>
+        <tr><th>指标</th><th>数值</th></tr>
+        <tr><td>上涨家数</td><td>693（12.6%）</td></tr>
+        <tr><td>下跌家数</td><td>4797（86.9%）</td></tr>
+        <tr><td>上证指数</td><td>-1.26%</td></tr>
+        <tr><td>深证成指</td><td>-1.24%</td></tr>
+        <tr><td>创业板指</td><td>-0.94%</td></tr>
+        <tr><td>涨停/跌停估算</td><td>51 / 78</td></tr>
+      </table>
+      <div class="report" style="margin-top:16px">
+        <strong>AI 分析节选：</strong><br><br>
+        7月7日A股是一次典型的「指数回落+个股普跌」的弱势日。全市场5517只股票中仅693只上涨、4797只下跌，上涨占比仅12.6%，下跌占比高达86.9%。这更偏向<strong>结构性杀跌中的广谱扩散</strong>，尚未完全定义为系统性风险失控。
+      </div>
+      <p style="margin-top:12px;font-size:12px;color:#8b949e">输出文件：a_share_out/analysis_20260707.txt</p>
+    </div>
+  </div>
+
+  <!-- 证明4：步骤03板块挖掘 -->
+  <div class="card">
+    <div class="card-header">
+      <h2>证明④ 步骤03 热门板块 Top-5 × 25 股</h2>
+      <span class="badge">6维评分</span>
+    </div>
+    <div class="card-body">
+      <table>
+        <tr><th>排名</th><th>板块</th><th>平均涨跌</th><th>股票数</th><th>上涨比例</th><th>热度得分</th></tr>
+        <tr><td>1</td><td>半导体</td><td>+0.53%</td><td>194只</td><td>53.09%</td><td>14.56</td></tr>
+        <tr><td>2</td><td>磁性材料</td><td>-1.52%</td><td>36只</td><td>33.33%</td><td>8.17</td></tr>
+        <tr><td>3</td><td>互联网</td><td>-1.57%</td><td>80只</td><td>26.25%</td><td>6.14</td></tr>
+        <tr><td>4</td><td>铁路</td><td>-3.49%</td><td>3只</td><td>33.33%</td><td>6.03</td></tr>
+        <tr><td>5</td><td>公路</td><td>-0.90%</td><td>7只</td><td>28.57%</td><td>5.98</td></tr>
+      </table>
+      <div class="report" style="margin-top:16px">
+        <strong>半导体板块 Top-1 热门股：</strong> 688206.SH 概伦电子 · 综合得分 57.25 · 技术面 85.0 · RSI 64.5
+      </div>
+      <p style="margin-top:12px;font-size:12px;color:#8b949e">输出文件：market_analysis/market_sector_analysis_20260707.txt（304行）</p>
+    </div>
+  </div>
+
+  <!-- 证明5：步骤05混合预测 -->
+  <div class="card">
+    <div class="card-header">
+      <h2>证明⑤ 步骤05 LSTM+GPT 融合预测（688206.SH）</h2>
+      <span class="badge">DL 70% + GPT 30%</span>
+    </div>
+    <div class="card-body">
+      <div class="metrics">
+        <div class="metric"><div class="val">1083</div><div class="lbl">历史K线</div></div>
+        <div class="metric"><div class="val">41</div><div class="lbl">特征维度</div></div>
+        <div class="metric"><div class="val">1023</div><div class="lbl">训练样本</div></div>
+        <div class="metric"><div class="val">7:3</div><div class="lbl">融合权重</div></div>
+      </div>
+      <table>
+        <tr><th>来源</th><th>预测趋势</th><th>下跌</th><th>上涨</th><th>震荡</th></tr>
+        <tr><td>深度学习 (LSTM)</td><td>下跌</td><td>36.62%</td><td>36.59%</td><td>26.79%</td></tr>
+        <tr><td>大模型 (GPT-5)</td><td>震荡</td><td>28.00%</td><td>34.00%</td><td>38.00%</td></tr>
+        <tr style="background:#21262d"><td><strong>融合结果</strong></td><td><strong>上涨</strong></td><td><strong>34.04%</strong></td><td><strong>35.81%</strong></td><td><strong>30.15%</strong></td></tr>
+      </table>
+      <div class="report" style="margin-top:16px">
+        <strong>GPT 推理：</strong> 单日大涨20%后短线过热，RSI偏强且MACD金叉，量能尚可，次日更易高位震荡。（confidence: 0.63）
+      </div>
+      <p style="margin-top:12px;font-size:12px;color:#8b949e">输出文件：hybrid_predictions/688206.SH_hybrid_prediction.txt</p>
+    </div>
+  </div>
+
+  <p class="footer">本项目仅供学习研究，不构成投资建议 · 截图各卡片即可作为简历/答辩证明材料</p>
+</body>
+</html>

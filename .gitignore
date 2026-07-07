@@ -1,0 +1,28 @@
+# 敏感配置
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 运行输出（体积大，运行后本地生成）
+a_share_out/
+market_analysis/
+hybrid_predictions/
+batch_predictions/
+norm_params/
+lstm_models/
+lstm_plots/
+
+# IDE / 工具
+.cursor/
+.idea/
+.vscode/
+*.swp
+
+# 系统文件
+.DS_Store
+Thumbs.db
